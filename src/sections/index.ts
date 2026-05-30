@@ -1,0 +1,6 @@
+export { default as SuccessStoriesSection } from './SuccessStoriesSection';
+export { default as WhyPrimeStackSection } from './WhyPrimeStackSection';
+export { default as TechnologySection } from './TechnologySection';
+export { default as ProcessSection } from './ProcessSection';
+export { default as FAQSection } from './FAQSection';
+export { default as ContactSection } from './ContactSection';
