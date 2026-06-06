@@ -20,9 +20,9 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: {
-    default: "PrimeStack | Revenue Systems, Automation, and Custom Software",
-    template: "%s | PrimeStack",
+    title: {
+    default: "PrimeStack US | Software, AI, Automation & Custom Development",
+    template: "%s | PrimeStack US",
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -31,25 +31,33 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: siteConfig.name,
-    title: "PrimeStack | Revenue Systems, Automation, and Custom Software",
+    siteName: "PrimeStack",
+    title: "PrimeStack US | Software, AI, Automation & Custom Development",
     description: siteConfig.description,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PrimeStack website preview",
+        alt: "PrimeStack US — Software, AI, Automation & Custom Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PrimeStack | Revenue Systems, Automation, and Custom Software",
+    title: "PrimeStack US | Software, AI, Automation & Custom Development",
     description: siteConfig.description,
     images: ["/og-image.png"],
   },
@@ -90,6 +98,29 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareDevelopment",
+              name: "PrimeStack US",
+            url: siteConfig.url,
+            description: siteConfig.description,
+            areaServed: { "@type": "Country", name: "US" },
+            knowsAbout: [
+              "AI Automation",
+              "Custom Software Development",
+              "CRM & ERP Systems",
+              "Odoo Development",
+              "Web Application Development",
+              "Business Process Automation",
+            ],
+          })}
+        </Script>
 
         {gaId ? (
           <>

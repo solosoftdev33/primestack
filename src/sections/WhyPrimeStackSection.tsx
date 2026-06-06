@@ -1,87 +1,74 @@
 'use client';
 
 import React from 'react';
-import { SectionContainer, AnimatedHeading } from '@/components/ui';
+import { ShieldCheck, UserCheck, Zap, DollarSign, HeartHandshake, Target } from 'lucide-react';
+import { SectionContainer, AnimatedHeading, Card } from '@/components/ui';
+import { StaggerChildren, StaggerItem } from '@/components/animations';
 
-interface ComparisonRow {
-  topic: string;
-  agency: string;
-  primestack: string;
-}
-
-const COMPARISON_ROWS: ComparisonRow[] = [
+const reasons = [
   {
-    topic: 'Product Deliverable',
-    agency: 'Simple static websites or basic template portfolios',
-    primestack: 'Sleek, integrated automation & growth systems',
+    icon: ShieldCheck,
+    title: 'Enterprise-Quality Execution',
+    description:
+      'Production-grade systems with clean architecture, comprehensive testing, and scalable infrastructure — without the bloated agency overhead.',
   },
   {
-    topic: 'Client Relationship',
-    agency: 'One-time transactional, hands-off projects',
-    primestack: 'Long-term scaling and active ROI partnerships',
+    icon: UserCheck,
+    title: 'Direct Developer Access',
+    description:
+      'You work directly with the engineers building your system. No account managers or layers of abstraction — just clear communication and fast decisions.',
   },
   {
-    topic: 'Core Philosophy',
-    agency: 'Generic code without tracking business outcomes',
-    primestack: 'Business-first solutions focused on revenue',
+    icon: Zap,
+    title: 'Faster Turnaround',
+    description:
+      'Small, focused teams move faster. We ship working software in weeks, not quarters, and iterate based on real usage and feedback.',
   },
   {
-    topic: 'Workflow Automation',
-    agency: 'Manual administrative tasks and zero API links',
-    primestack: 'Fully integrated AI agent & backend workflows',
+    icon: DollarSign,
+    title: 'Leaner Pricing',
+    description:
+      'We keep our overhead lean and pass the savings to you. Enterprise-grade deliverables at rates that make sense for growing businesses.',
+  },
+  {
+    icon: HeartHandshake,
+    title: 'Long-Term Partnership',
+    description:
+      'We don\'t disappear after launch. Every engagement includes ongoing support, monitoring, and strategic optimization as your business evolves.',
+  },
+  {
+    icon: Target,
+    title: 'ROI-Driven Everything',
+    description:
+      'Every feature, every sprint, every decision is measured against business impact. If it doesn\'t improve your bottom line, we don\'t build it.',
   },
 ];
 
 export default function WhyPrimeStackSection() {
   return (
-    <SectionContainer id="why-primestack" background="muted">
+    <SectionContainer id="why-primestack" background="white">
       <AnimatedHeading as="h2" align="center">
-        Why Businesses Choose PrimeStack
+        Why PrimeStack US
       </AnimatedHeading>
       <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mt-4">
-        We don&apos;t just write code. We solve operational bottlenecks, improve
-        customer experiences, and build systems that scale businesses.
+        Enterprise-quality execution with the speed and pricing of a lean, focused team.
       </p>
 
-      {/* Comparison Grid Table */}
-      <div className="mt-16 w-full max-w-4xl mx-auto overflow-hidden bg-card border border-border rounded-[24px] shadow-[0_4px_24px_rgba(0,0,0,0.4)] select-none">
-        
-        {/* Table Header */}
-        <div className="grid grid-cols-1 md:grid-cols-12 border-b border-border bg-muted py-6 px-6 font-bold text-[10px] uppercase tracking-widest gap-4 items-center">
-          <div className="md:col-span-4 text-muted-foreground">Service Feature</div>
-          <div className="md:col-span-4 text-muted-foreground">Traditional Agencies</div>
-          <div className="md:col-span-4 text-accent font-extrabold border-l-0 md:border-l border-border md:pl-6">PrimeStack Approach</div>
-        </div>
-
-        {/* Table Body */}
-        <div className="divide-y divide-border">
-          {COMPARISON_ROWS.map((row, idx) => (
-            <div 
-              key={idx} 
-              className="grid grid-cols-1 md:grid-cols-12 py-6 px-6 items-center gap-4 hover:bg-muted/30 transition-colors duration-200"
-            >
-              {/* Topic Column */}
-              <div className="md:col-span-4 font-extrabold text-foreground text-sm md:text-[15px] leading-snug tracking-tight">
-                {row.topic}
+      <StaggerChildren className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {reasons.map((reason) => (
+          <StaggerItem key={reason.title}>
+            <Card hover={true} padding="lg" className="h-full border-border hover:border-accent/30 transition-all duration-300 group">
+              <div className="flex flex-col items-start text-left gap-4">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+                  <reason.icon className="w-5 h-5 text-accent" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground font-heading tracking-tight">{reason.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
               </div>
-              
-              {/* Traditional Agencies Column */}
-              <div className="md:col-span-4 text-xs md:text-sm text-muted-foreground flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5" aria-hidden="true">✕</span>
-                <span className="leading-relaxed">{row.agency}</span>
-              </div>
-              
-              {/* PrimeStack Column */}
-              <div className="md:col-span-4 text-xs md:text-sm text-foreground font-semibold flex items-start gap-3 bg-accent/5 md:bg-transparent -mx-2 px-3 py-3 md:py-0 md:px-0 rounded-2xl md:border-l border-border md:pl-6 md:-my-6 md:h-full md:flex-row md:items-center">
-                <span className="w-5 h-5 rounded-full bg-accent/20 text-accent border border-accent/30 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 md:mt-0" aria-hidden="true">✓</span>
-                <span className="leading-relaxed">{row.primestack}</span>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-      </div>
+            </Card>
+          </StaggerItem>
+        ))}
+      </StaggerChildren>
     </SectionContainer>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Bot, DatabaseZap, Layers3, ShieldCheck } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, TrendingUp, Settings, Code, Zap, GitMerge, ArrowLeftRight } from "lucide-react";
 import { createMetadata } from "@/lib/metadata";
 import { services } from "@/lib/site-content";
 
@@ -66,8 +66,15 @@ export default function ServicesPage() {
 }
 
 function ServiceIcon({ slug }: { slug: string }) {
-  if (slug === "ai-automation") return <Bot className="h-5 w-5" />;
-  if (slug === "crm-erp") return <DatabaseZap className="h-5 w-5" />;
-  if (slug === "odoo-development") return <ShieldCheck className="h-5 w-5" />;
-  return <Layers3 className="h-5 w-5" />;
+  switch (slug) {
+    case "website-development": return <Globe className="h-5 w-5" />;
+    case "mobile-apps": return <Smartphone className="h-5 w-5" />;
+    case "custom-software": return <TrendingUp className="h-5 w-5" />;
+    case "crm-erp": return <Settings className="h-5 w-5" />;
+    case "odoo-development": return <Code className="h-5 w-5" />;
+    case "ai-automation": return <Zap className="h-5 w-5" />;
+    case "system-integrations": return <GitMerge className="h-5 w-5" />;
+    case "digital-transformation": return <ArrowLeftRight className="h-5 w-5" />;
+    default: return <Globe className="h-5 w-5" />;
+  }
 }

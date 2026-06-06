@@ -52,7 +52,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-foreground font-heading mb-4">5. Governing Law</h2>
             <p>
-              Any claim relating to PrimeStack's website or services shall be governed by the laws of our operating jurisdiction, without regard to its conflict of law provisions.
+              Any claim relating to PrimeStack&apos;s website or services shall be governed by the laws of our operating jurisdiction, without regard to its conflict of law provisions.
             </p>
           </section>
         </div>

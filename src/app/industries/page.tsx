@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, UtensilsCrossed, Thermometer, HardHat, ShoppingBag, Factory, Briefcase } from 'lucide-react';
+import { ArrowRight, UtensilsCrossed, Thermometer, HardHat, ShoppingBag, HeartPulse, Truck, Building2, Factory, Briefcase, Rocket } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Industries We Serve',
   description:
-    'PrimeStack builds custom software solutions for restaurants, HVAC companies, contractors, retail, manufacturing, and professional services businesses.',
+    'PrimeStack builds custom software solutions for restaurants, HVAC companies, contractors, retail, healthcare, logistics, real estate, manufacturing, professional services, and startups.',
 };
 
 const INDUSTRIES = [
@@ -34,16 +34,40 @@ const INDUSTRIES = [
     href: '/industries/retail',
   },
   {
+    icon: HeartPulse,
+    name: 'Healthcare',
+    description: 'HIPAA-aware patient portals, scheduling systems, practice management tools, and secure data workflows.',
+    href: '/industries/healthcare',
+  },
+  {
+    icon: Truck,
+    name: 'Logistics & Supply Chain',
+    description: 'Fleet management, route optimization, warehouse tracking, and real-time shipment visibility.',
+    href: '/industries/logistics',
+  },
+  {
+    icon: Building2,
+    name: 'Real Estate',
+    description: 'Property management portals, lead tracking, CMA tools, and client communication platforms.',
+    href: '/industries/real-estate',
+  },
+  {
     icon: Factory,
     name: 'Manufacturing & Distribution',
     description: 'ERP systems, supply chain visibility, and production dashboards for operational control.',
-    href: '/industries',
+    href: '/industries/manufacturing',
   },
   {
     icon: Briefcase,
     name: 'Professional Services',
     description: 'CRM systems, client portals, and workflow automation that increase billable hours.',
-    href: '/industries',
+    href: '/industries/professional-services',
+  },
+  {
+    icon: Rocket,
+    name: 'Startups & Tech',
+    description: 'MVP development, product engineering, scalable infrastructure, and technical co-founding support.',
+    href: '/industries/startups',
   },
 ];
 

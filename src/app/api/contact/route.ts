@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Resend integration - uncomment when RESEND_API_KEY is configured
 // import { resend, CONTACT_EMAIL } from '@/lib/resend';
 
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'solosoftwaredev33@gmail.com';
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'primestackus@gmail.com';
 
 interface ContactFormData {
   name: string;
@@ -43,9 +43,10 @@ export async function POST(request: NextRequest) {
       const { Resend } = await import('resend');
       const resend = new Resend(process.env.RESEND_API_KEY);
 
-      await resend.emails.send({
-        from: 'PrimeStack <onboarding@resend.dev>',
+      const { data, error: sendError } = await resend.emails.send({
+        from: 'PrimeStack US <onboarding@resend.dev>',
         to: [CONTACT_EMAIL],
+        replyTo: body.email,
         subject: `New Inquiry from ${body.name} - ${body.company || 'N/A'}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #E5E7EB; border-radius: 12px;">
@@ -94,6 +95,16 @@ export async function POST(request: NextRequest) {
           </div>
         `,
       });
+
+      if (sendError) {
+        console.error('Resend send error:', sendError);
+        return NextResponse.json(
+          { error: `Email delivery failed: ${sendError.message}` },
+          { status: 500 }
+        );
+      }
+
+      console.log('Email sent successfully:', data?.id);
     } else {
       // Log to console when Resend is not configured (development)
       console.log('📧 Contact form submission (Resend not configured):');
@@ -112,9 +123,10 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('Contact form error:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Contact form error:', message);
     return NextResponse.json(
-      { error: 'Something went wrong. Please try again or email us directly.' },
+      { error: `Something went wrong: ${message}` },
       { status: 500 }
     );
   }

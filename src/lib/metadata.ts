@@ -28,12 +28,13 @@ export function createMetadata({
       url: canonical,
       siteName: siteConfig.name,
       type: "website",
+      locale: "en_US",
       images: [
         {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} website preview`,
+          alt: `${siteConfig.name} — AI-native systems for US businesses`,
         },
       ],
     },

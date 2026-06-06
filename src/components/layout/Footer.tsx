@@ -79,8 +79,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} PrimeStack. All rights reserved.</p>
-          <p>Built for growth, automation, and operational clarity.</p>
+          <p>© {year} PrimeStack US. All rights reserved.</p>
+          <p>Premium software solutions. Lean agency pricing. Measurable results.</p>
         </div>
       </div>
     </footer>

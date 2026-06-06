@@ -1,15 +1,15 @@
 'use client';
 
 import React from 'react';
-import { TrendingUp, Zap, Settings, Code } from 'lucide-react';
+import { TrendingUp, Zap, Settings, Code, Globe, Smartphone, GitMerge, ArrowLeftRight } from 'lucide-react';
 import { StaggerChildren, StaggerItem } from '@/components/animations';
 import {
   AnimatedHeading,
   SectionContainer,
   ServiceCard,
 } from '@/components/ui';
+import { motion } from 'framer-motion';
 
-// Funnel illustration mockup
 const FunnelVisual = () => (
   <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] shrink-0 select-none">
     <div className="flex items-center justify-between border-b border-border pb-2 mb-3">
@@ -36,7 +36,6 @@ const FunnelVisual = () => (
   </div>
 );
 
-// Workflow routing illustration
 const WorkflowVisual = () => (
   <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] shrink-0 select-none">
     <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2 mb-3">Automation Workflows</div>
@@ -68,7 +67,6 @@ const WorkflowVisual = () => (
   </div>
 );
 
-// Progress widgets illustration
 const DashboardVisual = () => (
   <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] shrink-0 select-none">
     <div className="flex items-center justify-between border-b border-border pb-2 mb-2">
@@ -94,7 +92,6 @@ const DashboardVisual = () => (
   </div>
 );
 
-// Code terminal illustration
 const TerminalVisual = () => (
   <div className="w-full h-full bg-background border border-border rounded-2xl p-4 flex flex-col relative overflow-hidden shadow-[0_12px_24px_rgba(0,0,0,0.3)] shrink-0 select-none">
     <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-3 shrink-0">
@@ -103,68 +100,123 @@ const TerminalVisual = () => (
         <span className="w-2 h-2 rounded-full bg-white/10" />
         <span className="w-2 h-2 rounded-full bg-white/10" />
       </div>
-      <span className="text-[8px] font-mono text-white/40 font-semibold">resend-workflow.ts</span>
+      <span className="text-[8px] font-mono text-white/40 font-semibold">app-deploy.ts</span>
       <div className="w-6" />
     </div>
     <div className="flex-1 font-mono text-[9px] text-white/80 leading-relaxed flex flex-col justify-center">
-      <div><span className="text-violet-400">const</span> resend = <span className="text-blue-400">new</span> Resend(API_KEY);</div>
-      <div><span className="text-violet-400">const</span> lead = <span className="text-blue-400">await</span> Odoo.getNewLead();</div>
-      <div className="text-white/30">{"// Qualification rule"}</div>
-      <div><span className="text-orange-400">if</span> (lead.budget &gt;= 5000) {"{"}</div>
-      <div className="pl-3"><span className="text-violet-400">await</span> resend.emails.send(CONTACT);</div>
-      <div>{"}"}</div>
+      <div><span className="text-violet-400">const</span> app = <span className="text-blue-400">new</span> Application(stack);</div>
+      <div><span className="text-violet-400">await</span> app.deploy(<span className="text-orange-400">'production'</span>);</div>
+      <div className="text-white/30">{"// Build complete"}</div>
+      <div><span className="text-emerald-400">✓</span> Deployed 4 services</div>
+      <div><span className="text-violet-400">await</span> app.monitor();</div>
     </div>
   </div>
 );
 
 const services = [
   {
-    icon: TrendingUp,
-    title: 'Increase Revenue',
+    icon: Globe,
+    title: 'Website Development',
     items: [
-      'High-converting websites',
+      'High-conversion marketing sites',
       'Local SEO optimization',
-      'Lead generation systems',
-      'Customer acquisition funnels',
+      'Performance-optimized landing pages',
+      'CMS-driven content management',
     ],
     layout: 'wide' as const,
     visual: <FunnelVisual />,
+    accent: '+42% leads',
   },
   {
-    icon: Zap,
-    title: 'Automate Operations',
+    icon: Smartphone,
+    title: 'Mobile App Development',
     items: [
-      'AI automation',
-      'Lead follow-up workflows',
-      'Customer communication systems',
-      'Business process automation',
+      'Cross-platform iOS and Android apps',
+      'Customer-facing mobile experiences',
+      'Field operations tools',
+      'Real-time backend sync',
+    ],
+    layout: 'tall' as const,
+    visual: <TerminalVisual />,
+    accent: '2 platforms',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Custom Software',
+    items: [
+      'Web applications and portals',
+      'Admin dashboards',
+      'Internal operations tools',
+      'Database-backed systems',
     ],
     layout: 'tall' as const,
     visual: <WorkflowVisual />,
+    accent: '30%+ faster',
   },
   {
     icon: Settings,
-    title: 'Streamline Business',
+    title: 'CRM & ERP Solutions',
     items: [
-      'CRM implementation',
-      'ERP systems',
-      'Inventory management',
-      'Workflow optimization',
+      'CRM setup and customization',
+      'Inventory and order workflows',
+      'Pipeline management',
+      'Team dashboards',
     ],
-    layout: 'tall' as const,
+    layout: 'wide' as const,
     visual: <DashboardVisual />,
+    accent: '1 source of truth',
   },
   {
     icon: Code,
-    title: 'Custom Software',
+    title: 'Odoo Development',
     items: [
-      'Web applications',
-      'Internal business tools',
-      'Customer portals',
-      'Mobile applications',
+      'Odoo implementation and migration',
+      'Custom module development',
+      'Third-party integrations',
+      'Training and support',
+    ],
+    layout: 'tall' as const,
+    visual: <TerminalVisual />,
+    accent: 'Built around you',
+  },
+  {
+    icon: Zap,
+    title: 'AI Automation',
+    items: [
+      'Lead follow-up workflows',
+      'Email, SMS, and CRM automation',
+      'AI qualification and routing',
+      'Automated reporting',
+    ],
+    layout: 'tall' as const,
+    visual: <WorkflowVisual />,
+    accent: '3x faster',
+  },
+  {
+    icon: GitMerge,
+    title: 'System Integrations',
+    items: [
+      'CRM and ERP platform connections',
+      'Payment gateway integrations',
+      'Marketing automation sync',
+      'Custom API development',
+    ],
+    layout: 'tall' as const,
+    visual: <DashboardVisual />,
+    accent: 'Unified stack',
+  },
+  {
+    icon: ArrowLeftRight,
+    title: 'Digital Transformation',
+    items: [
+      'Legacy system modernization',
+      'Paperless workflows',
+      'Cloud migration',
+      'Full-stack operations redesign',
     ],
     layout: 'wide' as const,
-    visual: <TerminalVisual />,
+    visual: <FunnelVisual />,
+    accent: 'Future-ready',
   },
 ];
 
@@ -172,24 +224,28 @@ export default function ServicesSection() {
   return (
     <SectionContainer id="services" background="muted">
       <AnimatedHeading as="h2" align="center">
-        Solutions That Drive Business Growth
+        Full-Service Software & Automation
       </AnimatedHeading>
-
       <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-        We don&apos;t just build software. We solve operational bottlenecks,
-        improve customer experiences, and help businesses scale efficiently.
+        From websites and mobile apps to AI automation and enterprise ERP — we build
+        the systems that power growing businesses.
       </p>
 
       <StaggerChildren className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service) => (
           <StaggerItem key={service.title} className={service.layout === 'wide' ? 'md:col-span-2' : 'md:col-span-1'}>
-            <ServiceCard
-              icon={service.icon}
-              title={service.title}
-              items={service.items}
-              layout={service.layout}
-              visual={service.visual}
-            />
+            <div className="group relative h-full">
+              <div className="absolute -inset-0.5 rounded-3xl bg-accent/10 opacity-0 blur-sm transition duration-300 group-hover:opacity-100" />
+              <div className="relative h-full">
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  items={service.items}
+                  layout={service.layout}
+                  visual={service.visual}
+                />
+              </div>
+            </div>
           </StaggerItem>
         ))}
       </StaggerChildren>

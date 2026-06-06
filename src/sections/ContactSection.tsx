@@ -99,14 +99,14 @@ export default function ContactSection() {
     <section className="section-padding border-t border-white/10 bg-[#0c0e12]" id="contact">
       <div className="section-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
-          <span className="eyebrow">Start here</span>
+          <span className="eyebrow">Get started</span>
           <h2 className="mt-6 text-balance text-4xl font-black leading-tight md:text-6xl">
-            Let us map the highest-ROI system first.
+            Let&apos;s Identify The Highest-ROI Opportunity In Your Business
           </h2>
           <p className="mt-5 text-pretty text-lg leading-8 text-muted-foreground">
-            Tell us what feels messy: missed leads, slow operations, outdated
-            web presence, disconnected tools, or a custom product idea. We will
-            turn that into a practical roadmap.
+            Tell us about your business, your goals, and what feels broken or
+            limiting. We will turn that into a practical roadmap with a clear
+            ROI estimate — no commitment required.
           </p>
 
           <div className="mt-9 grid gap-4">
@@ -121,6 +121,11 @@ export default function ContactSection() {
               label="Consultation"
               value="Free strategy call, no commitment"
             />
+            <ContactPoint
+              icon={<Phone className="h-5 w-5" />}
+              label="Response Time"
+              value="Typically within 24 hours"
+            />
           </div>
         </div>
 
@@ -134,7 +139,7 @@ export default function ContactSection() {
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-muted-foreground">
                   Thanks. We will review the details and get back to you within
-                  24 hours.
+                  24 hours with a preliminary assessment.
                 </p>
                 <button
                   type="button"
@@ -284,7 +289,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <Field label="What needs fixing?" htmlFor="contact-description" required>
+              <Field label="What needs attention?" htmlFor="contact-description" required>
                 <textarea
                   id="contact-description"
                   name="description"
@@ -292,7 +297,7 @@ export default function ContactSection() {
                   rows={5}
                   value={formData.description}
                   onChange={updateField}
-                  placeholder="Tell us about the website, workflow, automation, or business system you want to improve."
+                  placeholder="Tell us about your business, the systems you currently use, and what you'd like to improve or build."
                   className={`${inputClass} resize-none`}
                 />
               </Field>
@@ -309,7 +314,7 @@ export default function ContactSection() {
                 disabled={loading}
                 className="rounded-2xl bg-accent px-6 py-4 text-base font-black text-accent-foreground transition hover:bg-[#e2c37a] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? "Sending..." : "Identify My ROI Opportunity"}
               </button>
             </form>
           )}

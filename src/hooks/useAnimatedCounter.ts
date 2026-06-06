@@ -18,7 +18,7 @@ export function useAnimatedCounter(
   end: number,
   duration: number = 2
 ): UseAnimatedCounterReturn {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(end);
   const hasAnimated = useRef(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const elementRef = useRef<HTMLElement | null>(null);

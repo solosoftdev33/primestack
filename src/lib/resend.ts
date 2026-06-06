@@ -2,4 +2,4 @@ import { Resend } from 'resend';
 
 export const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'solosoftwaredev33@gmail.com';
+export const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'primestackus@gmail.com';

@@ -59,8 +59,8 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-foreground font-heading mb-4">5. Contact Us</h2>
             <p>
               If you have any questions about this Privacy Policy, you can contact us at{" "}
-              <a href="mailto:solosoftwaredev33@gmail.com" className="text-accent hover:underline font-bold">
-                solosoftwaredev33@gmail.com
+              <a href="mailto:primestackus@gmail.com" className="text-accent hover:underline font-bold">
+                primestackus@gmail.com
               </a>.
             </p>
           </section>

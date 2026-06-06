@@ -6,8 +6,12 @@ import {
   Thermometer,
   HardHat,
   ShoppingBag,
+  HeartPulse,
+  Truck,
+  Building2,
   Factory,
   Briefcase,
+  Rocket,
 } from 'lucide-react';
 import { StaggerChildren, StaggerItem } from '@/components/animations';
 import {
@@ -21,7 +25,7 @@ const industries = [
     icon: UtensilsCrossed,
     name: 'Restaurants & Food Chains',
     description:
-      'Online ordering, table management, and customer engagement systems that drive more covers and repeat visits.',
+      'Online ordering, local SEO, loyalty systems, and operations tools that increase orders and repeat visits.',
   },
   {
     icon: Thermometer,
@@ -42,6 +46,24 @@ const industries = [
       'Inventory management, online storefronts, and customer analytics that boost sales.',
   },
   {
+    icon: HeartPulse,
+    name: 'Healthcare',
+    description:
+      'HIPAA-aware patient portals, scheduling, practice management, and secure data workflows.',
+  },
+  {
+    icon: Truck,
+    name: 'Logistics & Supply Chain',
+    description:
+      'Fleet tracking, route optimization, warehouse management, and real-time shipment visibility.',
+  },
+  {
+    icon: Building2,
+    name: 'Real Estate',
+    description:
+      'Property portals, lead tracking, CMA tools, and client communication platforms.',
+  },
+  {
     icon: Factory,
     name: 'Manufacturing & Distribution',
     description:
@@ -53,6 +75,12 @@ const industries = [
     description:
       'CRM systems, client portals, and workflow automation that increase billable hours.',
   },
+  {
+    icon: Rocket,
+    name: 'Startups & Tech',
+    description:
+      'MVP development, product engineering, scalable infrastructure, and technical co-founding.',
+  },
 ];
 
 export default function IndustriesSection() {
@@ -63,11 +91,11 @@ export default function IndustriesSection() {
       </AnimatedHeading>
 
       <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-        We understand the unique challenges of local and growing businesses. Our
-        solutions are tailored to your industry.
+        Deep expertise across a wide range of industries. Every solution is tailored to
+        the specific challenges of your market.
       </p>
 
-      <StaggerChildren className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <StaggerChildren className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {industries.map((industry) => (
           <StaggerItem key={industry.name}>
             <IndustryCard
