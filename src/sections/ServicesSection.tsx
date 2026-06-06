@@ -11,7 +11,7 @@ import {
 import { motion } from 'framer-motion';
 
 const FunnelVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] shrink-0 select-none">
+  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
     <div className="flex items-center justify-between border-b border-border pb-2 mb-3">
       <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">Acquisition Funnel</span>
       <span className="text-[10px] font-extrabold text-accent bg-accent/10 px-2 py-0.5 rounded-full">$24,800 Generated</span>
@@ -37,7 +37,7 @@ const FunnelVisual = () => (
 );
 
 const WorkflowVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] shrink-0 select-none">
+  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
     <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2 mb-3">Automation Workflows</div>
     <div className="space-y-3 flex-1 flex flex-col justify-center">
       <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ const WorkflowVisual = () => (
 );
 
 const DashboardVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] shrink-0 select-none">
+  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
     <div className="flex items-center justify-between border-b border-border pb-2 mb-2">
       <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">CRM Integrations</span>
       <span className="text-[10px] font-bold text-foreground">Active Sync</span>
@@ -93,7 +93,7 @@ const DashboardVisual = () => (
 );
 
 const TerminalVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-4 flex flex-col relative overflow-hidden shadow-[0_12px_24px_rgba(0,0,0,0.3)] shrink-0 select-none">
+  <div className="w-full h-full bg-background border border-border rounded-2xl p-4 flex flex-col relative overflow-hidden shadow-[0_12px_24px_rgba(0,0,0,0.3)] select-none">
     <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-3 shrink-0">
       <div className="flex items-center gap-1">
         <span className="w-2 h-2 rounded-full bg-white/10" />
