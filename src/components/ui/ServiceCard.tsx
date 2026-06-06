@@ -61,8 +61,8 @@ export default function ServiceCard({
       {visual && (
         <div className={`w-full z-10 flex items-center justify-center ${
           isWide 
-            ? 'md:w-1/2 aspect-[4/3] w-full md:max-w-none' 
-            : 'aspect-[4/3] mt-2'
+            ? 'md:w-1/2 md:aspect-[4/3] w-full' 
+            : 'md:aspect-[4/3] mt-2'
         }`}>
           {visual}
         </div>

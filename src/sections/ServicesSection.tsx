@@ -2,21 +2,19 @@
 
 import React from 'react';
 import { TrendingUp, Zap, Settings, Code, Globe, Smartphone, GitMerge, ArrowLeftRight } from 'lucide-react';
-import { StaggerChildren, StaggerItem } from '@/components/animations';
 import {
   AnimatedHeading,
   SectionContainer,
   ServiceCard,
 } from '@/components/ui';
-import { motion } from 'framer-motion';
 
 const FunnelVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
-    <div className="flex items-center justify-between border-b border-border pb-2 mb-3">
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="flex items-center justify-between border-b border-border pb-2">
       <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">Acquisition Funnel</span>
       <span className="text-[10px] font-extrabold text-accent bg-accent/10 px-2 py-0.5 rounded-full">$24,800 Generated</span>
     </div>
-    <div className="space-y-2.5 mt-2 flex-1 flex flex-col justify-center">
+    <div className="space-y-2">
       <div className="flex items-center justify-between text-[10px] font-semibold bg-card border border-border p-2.5 rounded-xl">
         <span className="text-muted-foreground">Google Maps (Local SEO)</span>
         <span className="font-bold text-accent">+42% leads</span>
@@ -37,9 +35,9 @@ const FunnelVisual = () => (
 );
 
 const WorkflowVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
-    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2 mb-3">Automation Workflows</div>
-    <div className="space-y-3 flex-1 flex flex-col justify-center">
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2">Automation Workflows</div>
+    <div className="space-y-3">
       <div className="flex items-center gap-3">
         <div className="w-6 h-6 rounded-lg bg-accent text-accent-foreground text-[10px] font-extrabold flex items-center justify-center shadow-md">⚡</div>
         <div className="text-left">
@@ -68,12 +66,12 @@ const WorkflowVisual = () => (
 );
 
 const DashboardVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
-    <div className="flex items-center justify-between border-b border-border pb-2 mb-2">
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="flex items-center justify-between border-b border-border pb-2">
       <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">CRM Integrations</span>
       <span className="text-[10px] font-bold text-foreground">Active Sync</span>
     </div>
-    <div className="flex items-center gap-4 mt-2 flex-1">
+    <div className="flex items-center gap-4">
       <div className="flex-1 space-y-2.5">
         <div>
           <div className="text-[8px] text-muted-foreground font-bold uppercase tracking-wider">API Latency</div>
@@ -93,8 +91,8 @@ const DashboardVisual = () => (
 );
 
 const TerminalVisual = () => (
-  <div className="w-full h-full bg-background border border-border rounded-2xl p-4 flex flex-col relative overflow-hidden shadow-[0_12px_24px_rgba(0,0,0,0.3)] select-none">
-    <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-3 shrink-0">
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 shrink-0">
       <div className="flex items-center gap-1">
         <span className="w-2 h-2 rounded-full bg-white/10" />
         <span className="w-2 h-2 rounded-full bg-white/10" />
@@ -103,7 +101,7 @@ const TerminalVisual = () => (
       <span className="text-[8px] font-mono text-white/40 font-semibold">app-deploy.ts</span>
       <div className="w-6" />
     </div>
-    <div className="flex-1 font-mono text-[9px] text-white/80 leading-relaxed flex flex-col justify-center">
+    <div className="font-mono text-[9px] text-white/80 leading-relaxed">
       <div><span className="text-violet-400">const</span> app = <span className="text-blue-400">new</span> Application(stack);</div>
       <div><span className="text-violet-400">await</span> app.deploy(<span className="text-orange-400">'production'</span>);</div>
       <div className="text-white/30">{"// Build complete"}</div>
@@ -231,9 +229,9 @@ export default function ServicesSection() {
         the systems that power growing businesses.
       </p>
 
-      <StaggerChildren className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service) => (
-          <StaggerItem key={service.title} className={service.layout === 'wide' ? 'md:col-span-2' : 'md:col-span-1'}>
+          <div key={service.title} className={service.layout === 'wide' ? 'md:col-span-2' : 'md:col-span-1'}>
             <div className="group relative h-full">
               <div className="absolute -inset-0.5 rounded-3xl bg-accent/10 opacity-0 blur-sm transition duration-300 group-hover:opacity-100" />
               <div className="relative h-full">
@@ -246,9 +244,9 @@ export default function ServicesSection() {
                 />
               </div>
             </div>
-          </StaggerItem>
+          </div>
         ))}
-      </StaggerChildren>
+      </div>
     </SectionContainer>
   );
 }

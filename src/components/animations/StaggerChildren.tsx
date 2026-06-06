@@ -16,9 +16,7 @@ interface StaggerItemProps {
 }
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
   visible: (custom: { staggerDelay: number; delay: number }) => ({
-    opacity: 1,
     transition: {
       delayChildren: custom.delay,
       staggerChildren: custom.staggerDelay,
@@ -27,9 +25,8 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { y: 20 },
   visible: {
-    opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: 'easeOut' },
   },
@@ -46,7 +43,7 @@ export function StaggerChildren({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
       custom={{ staggerDelay, delay }}
       className={className}
     >
