@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import { industries, services, siteConfig } from "@/lib/site-content";
 
 const companyLinks = [
-  { label: "Success Stories", href: "/success-stories" },
+  { label: "Solutions", href: "/solutions" },
   { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy", href: "/privacy" },
@@ -65,14 +65,14 @@ export default function Footer() {
               Ready to upgrade the system behind your business?
             </p>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
-              Book a strategy call and we will map the highest-ROI opportunities
-              first.
+              Tell us what is slowing you down and get a practical improvement
+              plan — free, with no obligation.
             </p>
             <Link
               href="/contact"
               className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-accent"
             >
-              Start the conversation
+              Get a Free Business Audit
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>

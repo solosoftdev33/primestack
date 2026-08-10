@@ -1,21 +1,24 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { AlertCircle, CheckCircle2, Mail, MessageSquare, Phone } from "lucide-react";
-import { industries, services, siteConfig } from "@/lib/site-content";
-
-type PreferredContact = "Email" | "Call" | "WhatsApp";
+import {
+  AlertCircle,
+  CheckCircle2,
+  Clock,
+  Mail,
+  MapPin,
+  Search,
+  Send,
+} from "lucide-react";
+import { siteConfig } from "@/lib/site-content";
 
 type ContactFormData = {
   name: string;
   company: string;
   email: string;
   phone: string;
-  businessType: string;
-  budget: string;
-  service: string;
+  website: string;
   description: string;
-  preferredContact: PreferredContact;
 };
 
 const initialData: ContactFormData = {
@@ -23,24 +26,34 @@ const initialData: ContactFormData = {
   company: "",
   email: "",
   phone: "",
-  businessType: "",
-  budget: "",
-  service: "",
+  website: "",
   description: "",
-  preferredContact: "Email",
 };
-
-const budgetRanges = [
-  "Under $5,000",
-  "$5,000 - $15,000",
-  "$15,000 - $50,000",
-  "$50,000+",
-] as const;
 
 const inputClass =
   "w-full rounded-2xl border border-white/10 bg-black/24 px-4 py-3.5 text-sm font-semibold text-foreground outline-none transition placeholder:text-muted-foreground/55 focus:border-accent/45 focus:bg-black/35";
 
 const labelClass = "mb-2 block text-xs font-black uppercase text-accent";
+
+const nextSteps = [
+  {
+    icon: Send,
+    title: "Tell us what is slowing you down",
+    description: "A short form is all it takes — no sales call required.",
+  },
+  {
+    icon: Search,
+    title: "We review your setup",
+    description:
+      "An engineer looks at your website, lead flow, and manual work.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "You get a practical plan",
+    description:
+      "Specific opportunities, ranked by impact. Keep it whether you hire us or not.",
+  },
+];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState<ContactFormData>(initialData);
@@ -49,7 +62,7 @@ export default function ContactSection() {
   const [error, setError] = useState<string | null>(null);
 
   function updateField(
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { name, value } = event.target;
     setFormData((current) => ({ ...current, [name]: value }));
@@ -65,15 +78,7 @@ export default function ContactSection() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          message: [
-            formData.description,
-            formData.service ? `Preferred service: ${formData.service}` : "",
-          ]
-            .filter(Boolean)
-            .join("\n\n"),
-        }),
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();
@@ -96,17 +101,21 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="section-padding border-t border-white/10 bg-[#0c0e12]" id="contact">
+    <section
+      className="section-padding border-t border-white/10 bg-[#0c0e12]"
+      id="contact"
+    >
       <div className="section-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
-          <span className="eyebrow">Get started</span>
+          <span className="eyebrow">Get a free business audit</span>
           <h2 className="mt-6 text-balance text-4xl font-black leading-tight md:text-6xl">
-            Let&apos;s Identify The Highest-ROI Opportunity In Your Business
+            Tell us what&apos;s slowing you down. We&apos;ll tell you what we&apos;d fix.
           </h2>
           <p className="mt-5 text-pretty text-lg leading-8 text-muted-foreground">
-            Tell us about your business, your goals, and what feels broken or
-            limiting. We will turn that into a practical roadmap with a clear
-            ROI estimate — no commitment required.
+            You don&apos;t need a polished pitch. Just describe the problem —
+            missed calls, manual data entry, a website that doesn&apos;t bring in
+            work. An engineer will review it and send you a practical
+            improvement plan. Free, and with no obligation.
           </p>
 
           <div className="mt-9 grid gap-4">
@@ -117,15 +126,39 @@ export default function ContactSection() {
               href={`mailto:${siteConfig.email}`}
             />
             <ContactPoint
-              icon={<MessageSquare className="h-5 w-5" />}
-              label="Consultation"
-              value="Free strategy call, no commitment"
-            />
-            <ContactPoint
-              icon={<Phone className="h-5 w-5" />}
+              icon={<Clock className="h-5 w-5" />}
               label="Response Time"
               value="Typically within 24 hours"
             />
+            <ContactPoint
+              icon={<MapPin className="h-5 w-5" />}
+              label="Location"
+              value="Remote team, working with US businesses"
+            />
+          </div>
+
+          <div className="mt-9 rounded-2xl border border-accent/20 bg-accent/[0.08] p-6">
+            <p className="text-sm font-black uppercase tracking-widest text-accent">
+              What happens next
+            </p>
+            <div className="mt-5 grid gap-5">
+              {nextSteps.map((step, idx) => (
+                <div key={step.title} className="flex items-start gap-4">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
+                    <step.icon className="h-4.5 w-4.5" size={18} strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-bold text-foreground">
+                      <span className="mr-1.5 text-accent">{idx + 1}.</span>
+                      {step.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -135,18 +168,18 @@ export default function ContactSection() {
               <div>
                 <CheckCircle2 className="mx-auto h-14 w-14 text-accent" />
                 <h3 className="mt-6 text-3xl font-black text-foreground">
-                  Message sent
+                  Request received
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-muted-foreground">
-                  Thanks. We will review the details and get back to you within
-                  24 hours with a preliminary assessment.
+                  Thanks. An engineer will review your current setup and get
+                  back to you within 24 hours with first thoughts.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSuccess(false)}
                   className="mt-7 rounded-full border border-white/10 px-5 py-3 text-sm font-black text-foreground transition hover:border-accent/35"
                 >
-                  Send another message
+                  Send another request
                 </button>
               </div>
             </div>
@@ -158,16 +191,19 @@ export default function ContactSection() {
                     id="contact-name"
                     name="name"
                     required
+                    autoComplete="name"
                     value={formData.name}
                     onChange={updateField}
                     placeholder="Your name"
                     className={inputClass}
                   />
                 </Field>
-                <Field label="Company" htmlFor="contact-company">
+                <Field label="Company" htmlFor="contact-company" required>
                   <input
                     id="contact-company"
                     name="company"
+                    required
+                    autoComplete="organization"
                     value={formData.company}
                     onChange={updateField}
                     placeholder="Company name"
@@ -183,6 +219,7 @@ export default function ContactSection() {
                     name="email"
                     type="email"
                     required
+                    autoComplete="email"
                     value={formData.email}
                     onChange={updateField}
                     placeholder="you@company.com"
@@ -194,6 +231,7 @@ export default function ContactSection() {
                     id="contact-phone"
                     name="phone"
                     type="tel"
+                    autoComplete="tel"
                     value={formData.phone}
                     onChange={updateField}
                     placeholder="Optional"
@@ -202,94 +240,23 @@ export default function ContactSection() {
                 </Field>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Field label="Business type" htmlFor="contact-business-type">
-                  <select
-                    id="contact-business-type"
-                    name="businessType"
-                    value={formData.businessType}
-                    onChange={updateField}
-                    className={inputClass}
-                  >
-                    <option value="">Select industry</option>
-                    {industries.map((industry) => (
-                      <option key={industry.slug} value={industry.title}>
-                        {industry.title}
-                      </option>
-                    ))}
-                    <option value="Other">Other</option>
-                  </select>
-                </Field>
-                <Field label="Budget" htmlFor="contact-budget">
-                  <select
-                    id="contact-budget"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={updateField}
-                    className={inputClass}
-                  >
-                    <option value="">Select range</option>
-                    {budgetRanges.map((range) => (
-                      <option key={range} value={range}>
-                        {range}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-              </div>
-
-              <Field label="Priority service" htmlFor="contact-service">
-                <select
-                  id="contact-service"
-                  name="service"
-                  value={formData.service}
+              <Field label="Website" htmlFor="contact-website">
+                <input
+                  id="contact-website"
+                  name="website"
+                  type="url"
+                  value={formData.website}
                   onChange={updateField}
+                  placeholder="Optional — your website or social page"
                   className={inputClass}
-                >
-                  <option value="">Not sure yet</option>
-                  {services.map((service) => (
-                    <option key={service.slug} value={service.title}>
-                      {service.title}
-                    </option>
-                  ))}
-                </select>
+                />
               </Field>
 
-              <div>
-                <span className={labelClass}>Preferred contact</span>
-                <div className="flex flex-wrap gap-3">
-                  {(["Email", "Call", "WhatsApp"] as const).map((method) => {
-                    const active = formData.preferredContact === method;
-
-                    return (
-                      <button
-                        key={method}
-                        type="button"
-                        onClick={() =>
-                          setFormData((current) => ({
-                            ...current,
-                            preferredContact: method,
-                          }))
-                        }
-                        className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-black transition ${
-                          active
-                            ? "border-accent bg-accent text-accent-foreground"
-                            : "border-white/10 bg-black/20 text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        {method === "Email" ? <Mail className="h-4 w-4" /> : null}
-                        {method === "Call" ? <Phone className="h-4 w-4" /> : null}
-                        {method === "WhatsApp" ? (
-                          <MessageSquare className="h-4 w-4" />
-                        ) : null}
-                        {method}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <Field label="What needs attention?" htmlFor="contact-description" required>
+              <Field
+                label="What are you trying to improve?"
+                htmlFor="contact-description"
+                required
+              >
                 <textarea
                   id="contact-description"
                   name="description"
@@ -297,7 +264,7 @@ export default function ContactSection() {
                   rows={5}
                   value={formData.description}
                   onChange={updateField}
-                  placeholder="Tell us about your business, the systems you currently use, and what you'd like to improve or build."
+                  placeholder="For example: we miss calls after 5pm, our quote process runs on spreadsheets, or our website hasn't brought in a lead in months."
                   className={`${inputClass} resize-none`}
                 />
               </Field>
@@ -314,8 +281,12 @@ export default function ContactSection() {
                 disabled={loading}
                 className="rounded-2xl bg-accent px-6 py-4 text-base font-black text-accent-foreground transition hover:bg-[#e2c37a] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {loading ? "Sending..." : "Identify My ROI Opportunity"}
+                {loading ? "Sending..." : "Get a Free Business Audit"}
               </button>
+              <p className="text-center text-xs text-muted-foreground">
+                Your information is only used to respond to your inquiry. No
+                spam, ever.
+              </p>
             </form>
           )}
         </div>

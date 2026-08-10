@@ -5,9 +5,9 @@ import { services } from "@/lib/site-content";
 const service = services.find((item) => item.slug === "ai-automation")!;
 
 export const metadata = createMetadata({
-  title: "AI Automation Services",
+  title: "AI Automation & AI Receptionist for US Businesses",
   description:
-    "PrimeStack builds AI automation for lead follow-up, customer communication, CRM routing, and reporting workflows.",
+    "AI receptionists, chatbots, lead follow-up, and workflow automation that answer fast, qualify leads, and route work automatically.",
   path: "/services/ai-automation",
 });
 

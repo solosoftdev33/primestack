@@ -8,105 +8,151 @@ import {
   ServiceCard,
 } from '@/components/ui';
 
-const FunnelVisual = () => (
-  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+/* Clean, honest capability diagrams — no fake metrics, no fake dashboards. */
+
+const LeadFlowVisual = () => (
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-2.5 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
     <div className="flex items-center justify-between border-b border-border pb-2">
-      <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">Acquisition Funnel</span>
-      <span className="text-[10px] font-extrabold text-accent bg-accent/10 px-2 py-0.5 rounded-full">$24,800 Generated</span>
+      <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">How leads flow to your team</span>
     </div>
-    <div className="space-y-2">
-      <div className="flex items-center justify-between text-[10px] font-semibold bg-card border border-border p-2.5 rounded-xl">
-        <span className="text-muted-foreground">Google Maps (Local SEO)</span>
-        <span className="font-bold text-accent">+42% leads</span>
-      </div>
-      <div className="flex items-center justify-between text-[10px] font-semibold bg-card border border-border p-2.5 rounded-xl">
-        <span className="text-muted-foreground">Inbound Landing Page</span>
-        <span className="font-bold text-accent">+18% Conv.</span>
-      </div>
-      <div className="flex items-center justify-between text-[10px] font-semibold bg-accent/20 border border-accent/30 text-foreground p-2.5 rounded-xl shadow-lg shadow-black/5">
-        <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Lead Sync API Qualified
+    {[
+      { step: 'Visit', note: 'Customer finds your site or ad' },
+      { step: 'Inquire', note: 'Calls, books, or messages' },
+      { step: 'Follow up', note: 'Auto-reply, SMS, or routing' },
+      { step: 'Booked', note: 'Job or order captured in your CRM' },
+    ].map((item, idx) => (
+      <div key={item.step} className="flex items-center gap-3 text-[10px] font-semibold bg-card border border-border p-2.5 rounded-xl">
+        <span className="w-5 h-5 rounded-full bg-accent/10 border border-accent/25 text-accent font-extrabold flex items-center justify-center shrink-0">
+          {idx + 1}
         </span>
-        <span className="font-extrabold text-emerald-400">Success</span>
+        <span className="text-foreground">{item.step}</span>
+        <span className="text-muted-foreground ml-auto text-right">{item.note}</span>
       </div>
+    ))}
+  </div>
+);
+
+const PhoneVisual = () => (
+  <div className="w-full bg-background border border-border rounded-2xl p-4 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="border-b border-border pb-2 mb-3">
+      <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">One app for iOS & Android</span>
+    </div>
+    <div className="mx-auto w-40 rounded-[18px] border border-white/10 bg-card p-3">
+      <div className="h-1.5 w-16 rounded-full bg-white/10 mx-auto mb-3" />
+      {['Book a service', 'Track your order', 'Message your crew'].map((row) => (
+        <div key={row} className="flex items-center gap-2 py-1.5 border-b border-white/[0.05] last:border-0">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+          <span className="text-[9px] text-foreground/80">{row}</span>
+        </div>
+      ))}
     </div>
   </div>
 );
 
 const WorkflowVisual = () => (
   <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
-    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2">Automation Workflows</div>
+    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2">Custom software fits your workflow</div>
     <div className="space-y-3">
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-lg bg-accent text-accent-foreground text-[10px] font-extrabold flex items-center justify-center shadow-md">⚡</div>
-        <div className="text-left">
-          <div className="text-[9px] font-bold text-foreground leading-none">Form Inbound Trigger</div>
-          <div className="text-[8px] text-muted-foreground mt-0.5">Capturing raw user data</div>
+      {[
+        { label: 'Input', note: 'Forms, files, or imports' },
+        { label: 'Process', note: 'Your rules, approvals, logic' },
+        { label: 'Output', note: 'Dashboards, reports, exports' },
+      ].map((row, idx) => (
+        <div key={row.label} className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-lg bg-accent text-accent-foreground text-[10px] font-extrabold flex items-center justify-center shadow-md shrink-0">
+            {idx + 1}
+          </div>
+          <div className="text-left">
+            <div className="text-[10px] font-bold text-foreground leading-none">{row.label}</div>
+            <div className="text-[9px] text-muted-foreground mt-1">{row.note}</div>
+          </div>
         </div>
-      </div>
-      <div className="w-[1px] h-3 bg-border ml-3" />
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-lg bg-card border border-border text-[10px] font-extrabold flex items-center justify-center">🧠</div>
-        <div className="text-left">
-          <div className="text-[9px] font-bold text-foreground leading-none">AI Agent Filter</div>
-          <div className="text-[8px] text-muted-foreground mt-0.5">Qualifying budget & intent</div>
-        </div>
-      </div>
-      <div className="w-[1px] h-3 bg-border ml-3" />
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-lg bg-card border border-border text-[10px] font-extrabold flex items-center justify-center">💬</div>
-        <div className="text-left">
-          <div className="text-[9px] font-bold text-foreground leading-none">SMS Auto-Booked</div>
-          <div className="text-[8px] text-accent mt-0.5 font-bold">Synced with CRM database</div>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 );
 
-const DashboardVisual = () => (
+const PipelineVisual = () => (
   <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
     <div className="flex items-center justify-between border-b border-border pb-2">
-      <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">CRM Integrations</span>
-      <span className="text-[10px] font-bold text-foreground">Active Sync</span>
+      <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">One source of truth</span>
+      <span className="text-[10px] font-bold text-foreground">CRM / ERP</span>
     </div>
-    <div className="flex items-center gap-4">
-      <div className="flex-1 space-y-2.5">
-        <div>
-          <div className="text-[8px] text-muted-foreground font-bold uppercase tracking-wider">API Latency</div>
-          <div className="text-base font-extrabold text-accent leading-none mt-0.5 font-heading">14ms</div>
+    <div className="flex items-center gap-2">
+      {['Leads', 'Jobs', 'Invoices', 'Inventory'].map((stage) => (
+        <div key={stage} className="flex-1 rounded-lg bg-card border border-border py-3 text-center">
+          <div className="text-[8px] uppercase tracking-wider text-muted-foreground font-bold">{stage}</div>
+          <div className="mt-1 mx-auto w-8 h-1.5 rounded-full bg-accent/30" />
         </div>
-        <div>
-          <div className="text-[8px] text-muted-foreground font-bold uppercase tracking-wider">Automation Rate</div>
-          <div className="text-base font-extrabold text-accent leading-none mt-0.5 font-heading">99.8%</div>
-        </div>
-      </div>
-      <div className="w-14 h-14 rounded-full border-[3.5px] border-white/5 flex items-center justify-center relative shrink-0">
-        <div className="absolute inset-0 rounded-full border-[3.5px] border-accent border-r-transparent rotate-[45deg]" />
-        <span className="text-[10px] font-extrabold text-accent font-heading">+40%</span>
-      </div>
+      ))}
+    </div>
+    <div className="rounded-xl border border-accent/20 bg-accent/[0.08] p-3 text-center">
+      <span className="text-[10px] font-bold text-foreground">One system, connected data, no re-entry</span>
     </div>
   </div>
 );
 
-const TerminalVisual = () => (
+const OdooVisual = () => (
   <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
-    <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 shrink-0">
-      <div className="flex items-center gap-1">
-        <span className="w-2 h-2 rounded-full bg-white/10" />
-        <span className="w-2 h-2 rounded-full bg-white/10" />
-        <span className="w-2 h-2 rounded-full bg-white/10" />
-      </div>
-      <span className="text-[8px] font-mono text-white/40 font-semibold">app-deploy.ts</span>
-      <div className="w-6" />
+    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2">Odoo built around your business</div>
+    <div className="grid grid-cols-2 gap-2">
+      {['CRM', 'Inventory', 'Quotes', 'Jobs', 'Invoices', 'Support'].map((mod) => (
+        <div key={mod} className="rounded-lg bg-card border border-border px-3 py-2 text-center">
+          <span className="text-[10px] font-bold text-foreground">{mod}</span>
+        </div>
+      ))}
     </div>
-    <div className="font-mono text-[9px] text-white/80 leading-relaxed">
-      <div><span className="text-violet-400">const</span> app = <span className="text-blue-400">new</span> Application(stack);</div>
-      <div><span className="text-violet-400">await</span> app.deploy(<span className="text-orange-400">'production'</span>);</div>
-      <div className="text-white/30">{"// Build complete"}</div>
-      <div><span className="text-emerald-400">✓</span> Deployed 4 services</div>
-      <div><span className="text-violet-400">await</span> app.monitor();</div>
+    <div className="rounded-xl border border-accent/20 bg-accent/[0.08] p-3 text-center">
+      <span className="text-[10px] font-bold text-foreground">Configured to match your process — not the other way around</span>
+    </div>
+  </div>
+);
+
+const ChatVisual = () => (
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-2.5 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="border-b border-border pb-2">
+      <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">AI receptionist / chatbot</span>
+    </div>
+    <div className="max-w-[85%] self-start rounded-2xl rounded-bl-md bg-card border border-border px-3 py-2">
+      <span className="text-[10px] text-foreground/80">Do you have availability this week?</span>
+    </div>
+    <div className="max-w-[85%] self-end rounded-2xl rounded-br-md bg-accent/[0.15] border border-accent/25 px-3 py-2">
+      <span className="text-[10px] text-foreground">Yes — I can get you scheduled right now.</span>
+    </div>
+    <div className="max-w-[85%] self-start rounded-2xl rounded-bl-md bg-card border border-border px-3 py-2">
+      <span className="text-[10px] text-foreground/80">Great, what time works best?</span>
+    </div>
+  </div>
+);
+
+const ConnectVisual = () => (
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2">Your tools, connected</div>
+    <div className="flex items-center justify-center gap-2">
+      {['CRM', 'ERP', 'Payments', 'Email', 'SMS'].map((node) => (
+        <div key={node} className="rounded-lg bg-card border border-border px-2.5 py-1.5">
+          <span className="text-[9px] font-bold text-foreground">{node}</span>
+        </div>
+      ))}
+    </div>
+    <div className="rounded-xl border border-accent/20 bg-accent/[0.08] p-3 text-center">
+      <span className="text-[10px] font-bold text-foreground">Data flows automatically — no manual re-entry</span>
+    </div>
+  </div>
+);
+
+const ProcessVisual = () => (
+  <div className="w-full bg-background border border-border rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] select-none">
+    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold border-b border-border pb-2">From manual to digital</div>
+    <div className="space-y-2">
+      {['Paper & spreadsheets', 'Connected digital workflows', 'Reports you can trust'].map((row, idx) => (
+        <div key={row} className="flex items-center gap-3 text-[10px] font-semibold bg-card border border-border p-2.5 rounded-xl">
+          <span className="w-5 h-5 rounded-full bg-accent/10 border border-accent/25 text-accent font-extrabold flex items-center justify-center shrink-0">
+            {idx + 1}
+          </span>
+          <span className="text-foreground">{row}</span>
+        </div>
+      ))}
     </div>
   </div>
 );
@@ -118,12 +164,11 @@ const services = [
     items: [
       'High-conversion marketing sites',
       'Local SEO optimization',
-      'Performance-optimized landing pages',
-      'CMS-driven content management',
+      'Clear calls-to-action: call, book, or message',
+      'CMS your team can update',
     ],
     layout: 'wide' as const,
-    visual: <FunnelVisual />,
-    accent: '+42% leads',
+    visual: <LeadFlowVisual />,
   },
   {
     icon: Smartphone,
@@ -135,8 +180,7 @@ const services = [
       'Real-time backend sync',
     ],
     layout: 'tall' as const,
-    visual: <TerminalVisual />,
-    accent: '2 platforms',
+    visual: <PhoneVisual />,
   },
   {
     icon: TrendingUp,
@@ -149,11 +193,10 @@ const services = [
     ],
     layout: 'tall' as const,
     visual: <WorkflowVisual />,
-    accent: '30%+ faster',
   },
   {
     icon: Settings,
-    title: 'CRM & ERP Solutions',
+    title: 'CRM & ERP Systems',
     items: [
       'CRM setup and customization',
       'Inventory and order workflows',
@@ -161,8 +204,7 @@ const services = [
       'Team dashboards',
     ],
     layout: 'wide' as const,
-    visual: <DashboardVisual />,
-    accent: '1 source of truth',
+    visual: <PipelineVisual />,
   },
   {
     icon: Code,
@@ -174,21 +216,19 @@ const services = [
       'Training and support',
     ],
     layout: 'tall' as const,
-    visual: <TerminalVisual />,
-    accent: 'Built around you',
+    visual: <OdooVisual />,
   },
   {
     icon: Zap,
     title: 'AI Automation',
     items: [
+      'AI receptionist and chatbots',
       'Lead follow-up workflows',
       'Email, SMS, and CRM automation',
-      'AI qualification and routing',
       'Automated reporting',
     ],
     layout: 'tall' as const,
-    visual: <WorkflowVisual />,
-    accent: '3x faster',
+    visual: <ChatVisual />,
   },
   {
     icon: GitMerge,
@@ -200,8 +240,7 @@ const services = [
       'Custom API development',
     ],
     layout: 'tall' as const,
-    visual: <DashboardVisual />,
-    accent: 'Unified stack',
+    visual: <ConnectVisual />,
   },
   {
     icon: ArrowLeftRight,
@@ -210,11 +249,10 @@ const services = [
       'Legacy system modernization',
       'Paperless workflows',
       'Cloud migration',
-      'Full-stack operations redesign',
+      'Operations redesign',
     ],
     layout: 'wide' as const,
-    visual: <FunnelVisual />,
-    accent: 'Future-ready',
+    visual: <ProcessVisual />,
   },
 ];
 
@@ -222,11 +260,11 @@ export default function ServicesSection() {
   return (
     <SectionContainer id="services" background="muted">
       <AnimatedHeading as="h2" align="center">
-        Full-Service Software & Automation
+        Software systems built around business outcomes
       </AnimatedHeading>
       <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-        From websites and mobile apps to AI automation and enterprise ERP — we build
-        the systems that power growing businesses.
+        From websites and AI receptionists to CRM/ERP and custom software —
+        we build the systems that help you capture more business and automate the work.
       </p>
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">

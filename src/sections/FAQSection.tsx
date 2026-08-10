@@ -5,44 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { SectionContainer, AnimatedHeading } from '@/components/ui';
 import { FadeUp } from '@/components/animations';
+import { faqItems } from '@/lib/site-content';
 
 interface FAQItem {
   question: string;
   answer: string;
 }
 
-const faqs: FAQItem[] = [
-  {
-    question: 'How much does a custom software project cost?',
-    answer:
-      'Project costs vary based on scope and complexity. Most projects range from $5,000 to $50,000+. We offer a free consultation to understand your needs and provide a detailed estimate tailored to your business goals and budget.',
-  },
-  {
-    question: 'Do you build websites only?',
-    answer:
-      'No. While we build high-converting websites, we specialize in complete business systems including AI automation, CRM/ERP implementation, custom software, mobile apps, and business process optimization. We build whatever your business needs to grow.',
-  },
-  {
-    question: 'Can you automate existing business processes?',
-    answer:
-      'Absolutely. We analyze your current workflows, identify manual bottlenecks, and implement automation solutions that can reduce manual work by up to 60%. From lead follow-up to inventory management, we automate what matters most.',
-  },
-  {
-    question: 'Do you work with restaurants and local businesses?',
-    answer:
-      'Yes. We have extensive experience working with restaurants, HVAC companies, contractors, retail stores, and other local businesses. We understand the unique challenges of local businesses and build solutions that drive real growth.',
-  },
-  {
-    question: 'Can you integrate with existing systems?',
-    answer:
-      'Yes. We specialize in integrating with existing tools and platforms including Odoo, popular CRMs, payment systems, and custom databases. Our solutions are designed to enhance your current workflow, not replace everything.',
-  },
-  {
-    question: 'Do you provide ongoing support?',
-    answer:
-      'Yes. We believe in long-term partnerships. We offer ongoing support, maintenance, performance monitoring, and continuous optimization to ensure your systems keep delivering results as your business grows.',
-  },
-];
+const faqs: readonly FAQItem[] = faqItems;
 
 function FAQAccordionItem({
   item,

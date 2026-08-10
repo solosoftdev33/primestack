@@ -5,9 +5,9 @@ import { services } from "@/lib/site-content";
 const service = services.find((item) => item.slug === "crm-erp")!;
 
 export const metadata = createMetadata({
-  title: "CRM and ERP Systems",
+  title: "CRM & ERP Systems — Setup, Customization & Migration",
   description:
-    "PrimeStack implements CRM and ERP systems that centralize customers, sales, inventory, operations, and reporting.",
+    "Centralize customers, sales, inventory, and jobs in one system. CRM and ERP setup, customization, and migration from spreadsheets and disconnected tools.",
   path: "/services/crm-erp",
 });
 

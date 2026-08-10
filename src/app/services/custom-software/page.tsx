@@ -5,9 +5,9 @@ import { services } from "@/lib/site-content";
 const service = services.find((item) => item.slug === "custom-software")!;
 
 export const metadata = createMetadata({
-  title: "Custom Software Development",
+  title: "Custom Software Development & Business Applications",
   description:
-    "PrimeStack builds custom web apps, portals, dashboards, and internal business tools for growing companies.",
+    "Web apps, customer portals, admin dashboards, and internal tools built around your exact workflow — not forced into a template.",
   path: "/services/custom-software",
 });
 

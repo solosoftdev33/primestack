@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { createMetadata } from "@/lib/metadata";
 import { processSteps } from "@/lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Our Process",
+export const metadata: Metadata = createMetadata({
+  title: "Process",
   description:
-    "PrimeStack's process is structured around ROI, not endless discovery. Every step has a clear business purpose to move your systems from messy to measurable.",
-};
+    "How PrimeStack US works: a free business audit, a practical improvement plan, short build cycles, and launch, support & iterate.",
+  path: "/process",
+});
 
 export default function ProcessPage() {
   return (
     <main className="pt-32 pb-20 bg-background text-foreground flex-1">
       <div className="section-container">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="eyebrow">Methodology</span>
+          <span className="eyebrow">How we work</span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground font-heading mt-6">
-            A practical path from messy to measurable
+            From messy to measurable, step by step
           </h1>
           <p className="text-lg text-muted-foreground mt-6 leading-relaxed">
-            Our process is structured around return on investment, not endless discovery meetings.
-            Every stage has a clear operational milestone.
+            No endless discovery meetings. Every stage has a clear business
+            purpose, and you stay in control of what gets built.
           </p>
         </div>
 
@@ -50,17 +52,18 @@ export default function ProcessPage() {
           <div className="premium-panel max-w-3xl mx-auto rounded-3xl p-8 md:p-12 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(210,173,99,0.08)_0%,transparent_60%)] pointer-events-none" />
             <h3 className="text-2xl md:text-3xl font-black text-foreground font-heading">
-              Ready to map your business opportunities?
+              Not sure where to start?
             </h3>
             <p className="text-muted-foreground mt-4 leading-relaxed text-sm md:text-base max-w-lg mx-auto">
-              Book a strategy call and we will identify the highest-leverage systems to automate or rebuild.
+              Start with a free business audit. Tell us what is slowing you
+              down and get a practical improvement plan — no obligation.
             </p>
             <div className="mt-8">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black hover:bg-[#e2c37a] transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0"
               >
-                Book a Strategy Call
+                Get a Free Business Audit
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

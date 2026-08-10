@@ -5,9 +5,9 @@ import { services } from "@/lib/site-content";
 const service = services.find((item) => item.slug === "mobile-apps")!;
 
 export const metadata = createMetadata({
-  title: "Mobile App Development",
+  title: "Mobile App Development (iOS & Android)",
   description:
-    "Cross-platform mobile applications for iOS and Android using Flutter — built for speed, reliability, and user adoption.",
+    "Cross-platform iOS and Android apps built from one codebase for customers, crews, and field teams — ordering, booking, and tracking.",
   path: "/services/mobile-apps",
 });
 

@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import ContactSection from '@/sections/ContactSection';
+import { createMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Contact Us',
+export const metadata: Metadata = createMetadata({
+  title: 'Contact',
   description:
-    'Get in touch with PrimeStack. Book a free consultation to discuss how we can help your business grow through custom software, AI automation, and business systems.',
-};
+    'Request a free business audit. Tell us what is slowing you down and get a practical improvement plan from an engineer — no obligation.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (

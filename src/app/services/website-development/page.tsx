@@ -5,9 +5,9 @@ import { services } from "@/lib/site-content";
 const service = services.find((item) => item.slug === "website-development")!;
 
 export const metadata = createMetadata({
-  title: "Website Development",
+  title: "High-Conversion Website Development for Local & US Businesses",
   description:
-    "High-conversion websites, landing pages, and web experiences built for performance, SEO, and lead generation.",
+    "Websites and landing pages built to capture leads, rank locally in Google, and turn visitors into calls and bookings — with clear CTAs your customers can't miss.",
   path: "/services/website-development",
 });
 

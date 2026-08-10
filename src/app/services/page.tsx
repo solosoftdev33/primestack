@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { services } from "@/lib/site-content";
 
 export const metadata = createMetadata({
-  title: "Services",
+  title: "Services — Software, AI, CRM/ERP & Automation",
   description:
-    "Explore PrimeStack services for custom software, AI automation, CRM/ERP systems, and Odoo development.",
+    "Websites, mobile apps, custom software, CRM/ERP systems, Odoo development, AI automation, and system integrations for growing US businesses.",
   path: "/services",
 });
 

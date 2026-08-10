@@ -5,9 +5,9 @@ import { services } from "@/lib/site-content";
 const service = services.find((item) => item.slug === "digital-transformation")!;
 
 export const metadata = createMetadata({
-  title: "Digital Transformation",
+  title: "Digital Transformation & Legacy System Modernization",
   description:
-    "End-to-end modernization of legacy systems, manual processes, and outdated infrastructure into scalable digital operations.",
+    "Modernize legacy systems, paper processes, and disconnected tools into scalable digital operations your team will actually use.",
   path: "/services/digital-transformation",
 });
 

@@ -12,6 +12,7 @@ import {
   Factory,
   Briefcase,
   Rocket,
+  Sparkles,
 } from 'lucide-react';
 import { StaggerChildren, StaggerItem } from '@/components/animations';
 import {
@@ -67,7 +68,13 @@ const industries = [
     icon: Factory,
     name: 'Manufacturing & Distribution',
     description:
-      'ERP systems, supply chain visibility, and production dashboards for operational control.',
+      'RFQ systems, CRM, Odoo, inventory, and customer portals for manufacturers and distributors.',
+  },
+  {
+    icon: Sparkles,
+    name: 'Med Spas & Cosmetic Clinics',
+    description:
+      'AI receptionist, online booking, lead follow-up, and review automation that fill the appointment calendar.',
   },
   {
     icon: Briefcase,

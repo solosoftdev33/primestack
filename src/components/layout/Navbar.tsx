@@ -48,7 +48,7 @@ export default function Navbar() {
             href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-extrabold text-accent-foreground shadow-[0_12px_30px_rgba(210,173,99,0.18)] transition hover:bg-[#e2c37a]"
           >
-            Book a Strategy Call
+            Free Business Audit
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
@@ -86,7 +86,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-3 text-sm font-extrabold text-accent-foreground"
             >
-              Book a Strategy Call
+              Free Business Audit
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
